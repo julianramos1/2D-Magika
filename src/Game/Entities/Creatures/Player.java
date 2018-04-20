@@ -120,7 +120,10 @@ public class Player extends CreatureBase {
 
 
         }
-
+        //Debugger
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_I)){
+            health += 5;
+        }
 
         //Inventory
         inventory.tick();
