@@ -57,7 +57,7 @@ public class Player extends CreatureBase {
         bounds.width=16*2;
         bounds.height=14*2;
         health=75;
-        attack=2;
+        attack=5;
 
 
         animDown = new Animation(animWalkingSpeed,Images.player_front);
@@ -121,8 +121,8 @@ public class Player extends CreatureBase {
 
         }
         //Debugger
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_I)){
-            health += 5;
+        if(handler.getKeyManager().lifebut){
+            health += 2;
         }
 
         //Inventory

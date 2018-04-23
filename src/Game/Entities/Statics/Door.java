@@ -43,7 +43,8 @@ public class Door extends StaticEntity {
         if(isBeinghurt()){
             setHealth(10000000);
         }
-
+        //This is where the condition to put the door invisible should work.
+        //TODO
         if(handler.getKeyManager().attbut){
             EP=true;
 
