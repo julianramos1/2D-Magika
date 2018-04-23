@@ -49,17 +49,39 @@ public abstract class EntityBase {
         }
     }
     public void renderLife(Graphics g) {
+//        if (beinghurt && count <=8){
+//            if(count == 8){
+//                count = 0;
+//                beinghurt=false;
+//            }
+//
+//            g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height/3)),42,42,null);
+//            count++;
+//
+//        }
         if (beinghurt && count <=8){
-            if(count == 8){
-                count = 0;
-                beinghurt=false;
-            }
+        	if(count == 8){
+        	count = 0;
+        	beinghurt=false;
+        	}
+        	
 
-            g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height/3)),42,42,null);
-            count++;
+        if(getHealth()<0){
+
+        g.drawImage(Images.numbers[0],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height/3)),42,42,null);
 
         }
-    }
+        	
+
+        else{g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height/3)),42,42,null);
+
+        }
+        	count++;
+        	
+        	}
+        	
+
+        }
 
     public boolean checkEntityCollisions(float xOffset, float yOffset){
         for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){
