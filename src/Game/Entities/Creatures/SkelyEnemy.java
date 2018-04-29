@@ -29,6 +29,7 @@ public class SkelyEnemy extends CreatureBase  {
     private Random randint;
     private int moveCount=0;
     private int direction;
+    private int RNGR;
 
     public SkelyEnemy(Handler handler, float x, float y) {
         super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
@@ -190,6 +191,10 @@ public class SkelyEnemy extends CreatureBase  {
 
     @Override
     public void die() {
-        handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
-    }
+    	randint=new Random();
+        RNGR=randint.nextInt(1) + 1;
+        System.out.println(RNGR);
+        if(RNGR==1){
+            handler.getWorld().getItemManager().addItem(Item.fireRuneItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
+        }    }
 }
