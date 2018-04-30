@@ -3,6 +3,8 @@ package Worlds;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Statics.*;
+import Game.Inventories.Inventory;
+import Game.Items.Item;
 import Main.Handler;
 
 /**
@@ -12,6 +14,7 @@ public class World1 extends BaseWorld{
 
     private Handler handler;
     private BaseWorld caveWorld;
+    private Inventory inventoryItems;
 
     public World1(Handler handler, String path, Player player){
         super(handler,path,player);
@@ -33,6 +36,7 @@ public class World1 extends BaseWorld{
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
+       
     }
 
 }
