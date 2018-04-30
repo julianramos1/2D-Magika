@@ -67,15 +67,13 @@ public class Bush extends StaticEntity {
 	public void render(Graphics g) {
 		renderLife(g);
 		g.drawImage(Images.bush[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-
 	}
 
 
 // TODO : Change woodItem for STICKS!!!
 	@Override
 	public void die() {
-		handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
-		handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+		handler.getWorld().getItemManager().addItem(Item.berry.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 	}
 
 	public void renderLife(Graphics g) {
