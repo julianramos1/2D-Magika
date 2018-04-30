@@ -45,6 +45,8 @@ public class Images {
     public static BufferedImage[] FireBallDown;
     public static BufferedImage loading;
     public static BufferedImage spellGUI;
+    public static BufferedImage[] bush;
+
 
 
     public Images() {
@@ -56,10 +58,14 @@ public class Images {
         SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
         SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
+        SpriteSheet bushsheet = new SpriteSheet(Images.loadImage("/Sheets/Bushsheet.png"));
+
 
 
 
         blocks = new BufferedImage[15];
+        bush = new BufferedImage[3];
+
 
         player_left = new BufferedImage[4];
         player_right = new BufferedImage[4];
@@ -200,6 +206,10 @@ public class Images {
             blocks[12] = newsheet.crop(0,260,Bwidth,Bheight);//mossyrock
             blocks[13] = newsheet.crop(176,0,Bwidth,Bheight*2);//tree
             blocks[14] = newsheet.crop(174,410,78,74);//rock
+            
+            
+            // Bush and trees array
+            bush[0] = bushsheet.crop(300, 180, 100, 100);//bush
 
 
             //player anim
