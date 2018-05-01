@@ -1,5 +1,6 @@
 package Game.Inventories;
 
+import Game.Entities.Statics.StaticEntity;
 import Game.Items.Item;
 import Game.SpellCast.FireBallSpell;
 import Resources.Images;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by Elemental on 1/3/2017.
  */
-public class Inventory {
+public class Inventory{
 
     private Handler handler;
     private boolean active = false;
@@ -111,6 +112,18 @@ public class Inventory {
         inventoryItems.add(item);
 
     }
+    public void checkItem(Item item){
+        for(Item i : inventoryItems){
+            if(i.getId() == item.getId()){
+                    i.getCount();
+                return;
+            }
+        }
+        if(item.getId()==2){
+            handler.getWorld().getEntityManager().getPlayer().getSpellGUI().addSpell(new FireBallSpell(handler));
+        }
+    }
+    
 
     //GET SET
     public Handler getHandler() {
