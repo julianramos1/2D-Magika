@@ -29,7 +29,7 @@ public class Bush extends StaticEntity {
 		health=8;
 
 		try {
-			audioFile = new File("res/music/Chopping.wav");
+			audioFile = new File("res/music/BushRustling.wav");
 			audioStream = AudioSystem.getAudioInputStream(audioFile);
 			format = audioStream.getFormat();
 			info = new DataLine.Info(Clip.class, format);
