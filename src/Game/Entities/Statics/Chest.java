@@ -1,12 +1,15 @@
 package Game.Entities.Statics;
 
+import Game.Entities.EntityManager;
 import Game.Entities.Creatures.Player;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
+import Game.Items.Item;
 import Game.Tiles.Tile;
 import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
+import Worlds.CaveWorld;
 
 import java.awt.*;
 
@@ -21,6 +24,9 @@ public class Chest extends StaticEntity {
 
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
+    private Inventory inventory;
+    protected EntityManager entityManager;
+    private BaseWorld caveWorld;
 
     public Chest(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
@@ -57,7 +63,14 @@ public class Chest extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
+        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer());
     	if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0))) {
+    		for (Item i : getInventory().getInventoryItems()) {
+                if (i.getName() == "Stick" && i.getCount() >= 3) {
+                	entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
+                    return;
+                }
+            }
             g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
             //JOptionPane.showMessageDialog(null, "To open the door deliver 3 sticks");
         	}
@@ -79,6 +92,16 @@ public class Chest extends StaticEntity {
         }
 
 
+    }
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
     @Override

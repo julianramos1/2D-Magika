@@ -192,7 +192,6 @@ public class Player extends CreatureBase {
                 i.setCount(i.getCount() - 1);
                 fcactive=false;
                 return;
-
             }
         }
     }
