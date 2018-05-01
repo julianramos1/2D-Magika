@@ -21,7 +21,7 @@ public class Bush extends StaticEntity {
 	private Clip audioClip;
 
 	public Bush(Handler handler, float x, float y) {
-		super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH);
+		super(handler, x, y, Tile.TILEHEIGHT, Tile.TILEWIDTH);
 		bounds.x=0;
 		bounds.y=50;
 		bounds.width = 64;
