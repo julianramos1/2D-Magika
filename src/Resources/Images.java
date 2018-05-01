@@ -46,6 +46,7 @@ public class Images {
     public static BufferedImage loading;
     public static BufferedImage spellGUI;
     public static BufferedImage[] bush;
+    public static BufferedImage[] chest;
 
 
 
@@ -60,11 +61,13 @@ public class Images {
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
         SpriteSheet bushsheet = new SpriteSheet(Images.loadImage("/Sheets/Bushsheet.png"));
         SpriteSheet berry = new SpriteSheet(Images.loadImage("/Sheets/berry.png"));
+        SpriteSheet chestSheet = new SpriteSheet(Images.loadImage("/Sheets/chest2.png"));
 
 
 
         blocks = new BufferedImage[15];
         bush = new BufferedImage[3];
+        chest = new BufferedImage[2];
 
 
         player_left = new BufferedImage[4];
@@ -212,6 +215,9 @@ public class Images {
             bush[0] = bushsheet.crop(295, 140, 84, 80);//bush
             bush[1] = berry.crop(0, 0, 64, 64);
 
+            //Chest
+            chest[0] = chestSheet.crop(0, 0, 30, 31);
+            chest[1] = chestSheet.crop(32, 0, 30, 31);
 
             //player anim
             player_front[0]=newsheet.crop(132,131,width,height);
