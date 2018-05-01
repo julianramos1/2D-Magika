@@ -23,7 +23,7 @@ public class Bush extends StaticEntity {
 	public Bush(Handler handler, float x, float y) {
 		super(handler, x, y, Tile.TILEHEIGHT, Tile.TILEWIDTH);
 		bounds.x=0;
-		bounds.y=50;
+		bounds.y=0; 
 		bounds.width = 64;
 		bounds.height = 64;
 		health=8;
@@ -73,7 +73,7 @@ public class Bush extends StaticEntity {
 // TODO : Change woodItem for STICKS!!!
 	@Override
 	public void die() {
-		handler.getWorld().getItemManager().addItem(Item.berry.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+		handler.getWorld().getItemManager().addItem(Item.stick.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 	}
 
 	public void renderLife(Graphics g) {

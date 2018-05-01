@@ -60,8 +60,8 @@ public class Images {
         SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
         SpriteSheet bushsheet = new SpriteSheet(Images.loadImage("/Sheets/Bushsheet.png"));
-        SpriteSheet berry = new SpriteSheet(Images.loadImage("/Sheets/berry.png"));
         SpriteSheet chestSheet = new SpriteSheet(Images.loadImage("/Sheets/chest2.png"));
+        SpriteSheet stick = new SpriteSheet(Images.loadImage("/Sheets/Stick.png"));
 
 
 
@@ -212,8 +212,8 @@ public class Images {
             
             
             // Bush and trees array
-            bush[0] = bushsheet.crop(295, 140, 84, 80);//bush
-            bush[1] = berry.crop(0, 0, 64, 64);
+            bush[0] = bushsheet.crop(295, 140, 84, 80); // Bush
+            bush[1] = stick.crop(0, 0, 32, 32); // Stick
 
             //Chest
             chest[0] = chestSheet.crop(0, 0, 30, 31);
