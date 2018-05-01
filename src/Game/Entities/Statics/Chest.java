@@ -24,6 +24,7 @@ public class Chest extends StaticEntity {
     private Clip audioClip;
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
+    protected float xMove, yMove;
 
     public Chest(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
@@ -64,14 +65,8 @@ public class Chest extends StaticEntity {
     @Override
     public void tick() {
         if(isBeinghurt()){
-            audioClip.start();
+           // audioClip.start();
             setHealth(10000000);
-        }
-        if(!isBeinghurt() && !handler.getKeyManager().attbut){
-            audioClip.stop();
-        }
-        if(!isActive()){
-            audioClip.stop();
         }
         if(handler.getKeyManager().attbut){
             EP=true;
@@ -84,8 +79,12 @@ public class Chest extends StaticEntity {
 
     @Override
     public void render(Graphics g) {
+    	if(handler.getKeyManager().attbut) {
+            g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+        	}
+    	else {
         g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-        g.setColor(Color.GREEN);
+    	}
         checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
     }
     
@@ -99,9 +98,10 @@ public class Chest extends StaticEntity {
             g.drawImage(Images.loading,0,0,800,600,null);
 
         }
-
-
     }
+        
+
+
 
     @Override
     public void die() {
