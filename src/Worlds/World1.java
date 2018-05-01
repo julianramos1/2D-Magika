@@ -32,6 +32,15 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));        
         entityManager.addEntity(new Bush(handler, 200, 200));
+        entityManager.addEntity(new Bush(handler, 50, 1238));
+        entityManager.addEntity(new Bush(handler, 876, 333));
+        entityManager.addEntity(new Bush(handler, 1234, 678));
+        entityManager.addEntity(new Bush(handler, 789, 1400));
+        entityManager.addEntity(new Bush(handler, 500, 1000));
+        entityManager.addEntity(new Bush(handler, 222, 750));
+        entityManager.addEntity(new Bush(handler, 1111, 1000));
+
+
         entityManager.addEntity(new Chest(handler, 300, 0));
 
 
