@@ -20,7 +20,7 @@ public class Inventory{
     private Handler handler;
     private boolean active = false;
     private UIManager uiManager;
-    private ArrayList<Item> inventoryItems;
+    protected ArrayList<Item> inventoryItems;
 
     public Inventory(Handler handler){
 

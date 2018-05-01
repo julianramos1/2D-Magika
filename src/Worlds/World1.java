@@ -6,6 +6,7 @@ import Game.Entities.Statics.*;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Main.Handler;
+import sun.management.counter.Variability;
 
 /**
  * Created by Elemental on 1/2/2017.
@@ -14,7 +15,7 @@ public class World1 extends BaseWorld{
 
     private Handler handler;
     private BaseWorld caveWorld;
-    private Inventory inventoryItems;
+    private Chest chest;
 
     public World1(Handler handler, String path, Player player){
         super(handler,path,player);
@@ -29,7 +30,6 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Rock(handler, 88, 1345));
         entityManager.addEntity(new Tree(handler, 77, 700));
         entityManager.addEntity(new Rock(handler, 700, 83));
-        //entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));        
         entityManager.addEntity(new Bush(handler, 200, 200));
         entityManager.addEntity(new Bush(handler, 50, 1238));
@@ -47,6 +47,9 @@ public class World1 extends BaseWorld{
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
        
+        if (chest.var == true) {
+            entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
+		}
     }
 
 }
