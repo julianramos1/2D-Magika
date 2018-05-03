@@ -34,7 +34,7 @@ public class Chest extends StaticEntity {
         health=10000000;
         bounds.x=0;
         bounds.y=0;
-        bounds.width = 68;
+        bounds.width = 100;
         bounds.height = 64;
 
         ir.width = bounds.width;
@@ -66,22 +66,24 @@ public class Chest extends StaticEntity {
     @Override
     public void render(Graphics g) {
         caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer());
-    	if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0))) {
-    		for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
-                if (i.getName() == "Stick" && i.getCount() >= 3) {
-                	var = true;
-//                	handler.getWorld().getEntityManager().addEntity(new Door(handler, 100, 0,caveWorld));
-                    return;
-                }
+        for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
+            if (i.getName() == "Stick" && i.getCount() >= 3) {
+            	var = true;
+            	//handler.getWorld().getEntityManager().addEntity(new Door(handler, 100, 0,caveWorld));
+                //g.drawImage(Images.door,(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+                return;
             }
-            g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-            //JOptionPane.showMessageDialog(null, "To open the door deliver 3 sticks");
+        }
+    	if((handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)))) {
+            g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),100,height,null);
+            JOptionPane.showMessageDialog(null, "To open the door deliver 3 sticks");
         	}
     	else {
-        g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+        g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),100,height,null);
+        checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
     	}
         g.setColor(Color.black);
-        checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
+//        checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
     }
 
     private void checkForPlayer(Graphics g, Player p) {

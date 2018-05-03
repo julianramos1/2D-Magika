@@ -2,6 +2,7 @@ package Game.Entities.Statics;
 
 import Game.Entities.Creatures.Player;
 import Game.GameStates.State;
+import Game.Items.Item;
 import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
@@ -59,7 +60,17 @@ public class Door extends StaticEntity {
         g.drawImage(Images.door,(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 
         g.setColor(Color.black);
-        checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
+        if(ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,20))) {
+        for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
+            if (i.getName() == "Stick" && i.getCount() >= 3) {
+            	//handler.getWorld().getEntityManager().addEntity(new Door(handler, 100, 0,caveWorld));
+                g.drawImage(Images.door,(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+                checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
+                return;
+            }
+        }
+        }
+        //checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
     }
 
     private void checkForPlayer(Graphics g, Player p) {
