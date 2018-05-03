@@ -30,7 +30,8 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Rock(handler, 88, 1345));
         entityManager.addEntity(new Tree(handler, 77, 700));
         entityManager.addEntity(new Rock(handler, 700, 83));
-        entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));        
+        entityManager.addEntity(new SkelyEnemy(handler, 1250, 500)); 
+        entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new Bush(handler, 200, 200));
         entityManager.addEntity(new Bush(handler, 50, 1238));
         entityManager.addEntity(new Bush(handler, 876, 333));
@@ -47,9 +48,7 @@ public class World1 extends BaseWorld{
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
        
-        if (chest.var == true) {
-            entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
-		}
+
     }
 
 }
