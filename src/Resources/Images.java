@@ -24,6 +24,10 @@ public class Images {
     public static BufferedImage[] SkelyEnemy_left;
     public static BufferedImage[] SkelyEnemy_front;
     public static BufferedImage[] SkelyEnemy_back;
+    public static BufferedImage[] ZombieEnemy_right;
+    public static BufferedImage[] ZombieEnemy_left;
+    public static BufferedImage[] ZombieEnemy_front;
+    public static BufferedImage[] ZombieEnemy_back;
     public static BufferedImage[] butstart;
     public static BufferedImage[] particleSmoke;
     public static BufferedImage[] items;
@@ -62,6 +66,8 @@ public class Images {
         SpriteSheet bushsheet = new SpriteSheet(Images.loadImage("/Sheets/Bushsheet.png"));
         SpriteSheet chestSheet = new SpriteSheet(Images.loadImage("/Sheets/chest2.png"));
         SpriteSheet stick = new SpriteSheet(Images.loadImage("/Sheets/Stick.png"));
+        SpriteSheet zombieSheet = new SpriteSheet(Images.loadImage("/Sheets/ZombieSheet.png"));
+
 
 
 
@@ -79,6 +85,11 @@ public class Images {
         SkelyEnemy_right = new BufferedImage[4];
         SkelyEnemy_front = new BufferedImage[4];
         SkelyEnemy_back = new BufferedImage[4];
+        
+        ZombieEnemy_left = new BufferedImage[3];
+        ZombieEnemy_right = new BufferedImage[3];
+        ZombieEnemy_front = new BufferedImage[3];
+        ZombieEnemy_back = new BufferedImage[3];
 
         butstart = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
@@ -260,6 +271,24 @@ public class Images {
             SkelyEnemy_back[1]=newsheet.crop(164,227+130,width,height);
             SkelyEnemy_back[2]=newsheet.crop(196,227+130,width,height);
             SkelyEnemy_back[3]=newsheet.crop(228,227+130,28,height);
+            
+            // Zombie enemy anim
+            ZombieEnemy_front[0]=zombieSheet.crop(54, 166, 40, 74);
+            ZombieEnemy_front[1]=zombieSheet.crop(100, 166, 40, 74);
+            ZombieEnemy_front[2]=zombieSheet.crop(6, 166, 40, 74);
+
+            ZombieEnemy_back[0]=zombieSheet.crop(54, 5, 40, 75);
+            ZombieEnemy_back[1]=zombieSheet.crop(100, 6, 41, 74);
+            ZombieEnemy_back[2]=zombieSheet.crop(6, 6, 41, 74);
+            
+            ZombieEnemy_left[0]=zombieSheet.crop(0, 246, 47, 74);
+            ZombieEnemy_left[1]=zombieSheet.crop(64, 243, 28, 77);
+            ZombieEnemy_left[2]=zombieSheet.crop(94, 246, 47, 74);
+            
+            ZombieEnemy_right[0]=zombieSheet.crop(7, 83, 40, 77);
+            ZombieEnemy_right[1]=zombieSheet.crop(63, 83, 28, 77);
+            ZombieEnemy_right[2]=zombieSheet.crop(101, 83, 40, 77);
+
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -2,6 +2,7 @@ package Worlds;
 
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
+import Game.Entities.Creatures.Zombie;
 import Game.Entities.Statics.*;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
@@ -30,7 +31,8 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Rock(handler, 88, 1345));
         entityManager.addEntity(new Tree(handler, 77, 700));
         entityManager.addEntity(new Rock(handler, 700, 83));
-        entityManager.addEntity(new SkelyEnemy(handler, 1250, 500)); 
+        entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
+        entityManager.addEntity(new Zombie(handler, 1000, 500));
         entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new Bush(handler, 200, 200));
         entityManager.addEntity(new Bush(handler, 50, 1238));
@@ -42,7 +44,7 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Bush(handler, 1111, 1000));
 
 
-        entityManager.addEntity(new Chest(handler, 300, 0));
+        entityManager.addEntity(new Chest(handler, 100, 0));
 
 
         entityManager.getPlayer().setX(spawnX);
