@@ -329,7 +329,8 @@ public class Player extends CreatureBase {
 
     }
 
-    private BufferedImage getCurrentFireAnimationFrame(){
+    //TODO Idea .contains or .intersects
+    public BufferedImage getCurrentFireAnimationFrame(){
 
         if(LaunchedFireBallR){
 

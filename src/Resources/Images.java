@@ -66,6 +66,7 @@ public class Images {
         SpriteSheet bushsheet = new SpriteSheet(Images.loadImage("/Sheets/Bushsheet.png"));
         SpriteSheet chestSheet = new SpriteSheet(Images.loadImage("/Sheets/chest2.png"));
         SpriteSheet stick = new SpriteSheet(Images.loadImage("/Sheets/Stick.png"));
+        SpriteSheet bone = new SpriteSheet(Images.loadImage("/Sheets/Bone.png"));
         SpriteSheet zombieSheet = new SpriteSheet(Images.loadImage("/Sheets/ZombieSheet.png"));
 
 
@@ -182,6 +183,7 @@ public class Images {
             particleSmoke[2]= newsheet.crop(154,400,20,35);
 
             items[0]= newsheet.crop(114,448,30,24);//log
+            items[1]= bone.crop(0,0,38,32);//bone
 
             numbers[1]= numsheet.crop(17,15,17,22);
             numbers[2]= numsheet.crop(64,16,14,19);

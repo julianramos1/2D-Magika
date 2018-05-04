@@ -21,7 +21,7 @@ public class World1 extends BaseWorld{
     public World1(Handler handler, String path, Player player){
         super(handler,path,player);
         this.handler = handler;
-        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
+        caveWorld = new CaveWorld(handler,"res/Maps/finalMap.map",player);
 
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Rock(handler, 100, 450));
@@ -44,7 +44,7 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Bush(handler, 1111, 1000));
 
 
-        entityManager.addEntity(new Chest(handler, 100, 0));
+        entityManager.addEntity(new Chest(handler, 1000, 0));
 
 
         entityManager.getPlayer().setX(spawnX);
