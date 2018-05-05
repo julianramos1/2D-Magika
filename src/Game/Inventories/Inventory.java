@@ -143,7 +143,6 @@ public class Inventory{
 			handler.getWorld().getEntityManager().getPlayer().getSpellGUI().addSpell(new FireBallSpell(handler));
 		}
 		inventoryItems.add(item);
-
 	}
 	public void checkItem(Item item){
 		for(Item i : inventoryItems){

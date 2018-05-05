@@ -1,5 +1,6 @@
 package Game.Entities.Statics;
 
+import Game.Entities.EntityBase;
 import Game.Entities.EntityManager;
 import Game.Entities.Creatures.Player;
 import Game.GameStates.State;
@@ -16,6 +17,7 @@ import java.awt.*;
 import javax.swing.JOptionPane;
 
 import com.sun.corba.se.spi.activation.InitialNameServiceOperations;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * Created by Elemental on 2/2/2017.
@@ -65,20 +67,28 @@ public class Chest extends StaticEntity {
 		}
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0))) {
 			for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
-				if (i.getName() == "Bone" && i.getCount() == 1) {
+				if (i.getName() == "Stick" && i.getCount() >= 3) {
+					for (int j = 0; j < 3; j++) {
+						chestInventory.addItem(Item.stick);
+						i.setCount(i.getCount() - 1);
+					}
+					System.out.print("Added stick to chest");
+				}
+			}
+			for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
+				if (j.getName() == "Bone" && j.getCount() == 1) {
 					chestInventory.addItem(Item.bone);
 					System.out.print("Added bone to chest");
-					i.setCount(i.getCount() - 1);
+					j.setCount(j.getCount() - 1);
 				}
 			}
 		}
 		chestInventory.tick();
 
 	}
-
 	@Override
 	public void render(Graphics g) {
-		caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer());
+		caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)) || isOpen == true) {
 			isOpen = true;
 			g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
