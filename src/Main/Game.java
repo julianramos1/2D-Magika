@@ -1,9 +1,11 @@
 package Main;
 
+import Game.GameStates.GameOverState;
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
 import Game.GameStates.State;
+import Game.GameStates.WinState;
 import Inputs.KeyManager;
 import Inputs.MouseManager;
 import Resources.GameCamera;
@@ -23,6 +25,7 @@ import java.io.IOException;
  */
 
 public class Game implements Runnable {
+	
     private DisplayScreen display;
     private int width, height;
     public String title;
@@ -32,12 +35,12 @@ public class Game implements Runnable {
 
     private BufferStrategy bs;
     private Graphics g;
-
-    //States
+    
     public State gameState;
     public State menuState;
     public State pauseState;
-
+    public State gameOverState;
+    public State winState;
 
     //Input
     private KeyManager keyManager;
@@ -90,6 +93,8 @@ public class Game implements Runnable {
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
+        gameOverState = new GameOverState(handler);
+        winState = new WinState(handler);
 
         State.setState(menuState);
 
