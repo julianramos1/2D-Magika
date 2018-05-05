@@ -43,6 +43,7 @@ public class Images {
 
     
     public static BufferedImage[] Resume;
+    public static BufferedImage requirements;
     public static BufferedImage[] BTitle;
     public static BufferedImage[] Options;
     public static BufferedImage[] Runes;
@@ -126,6 +127,8 @@ public class Images {
             Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
             GameOver = ImageIO.read(getClass().getResourceAsStream("/Buttons/GameOver.png"));
             YouWin = ImageIO.read(getClass().getResourceAsStream("/Buttons/YOUWIN.png"));
+            requirements = ImageIO.read(getClass().getResourceAsStream("/Sheets/requirements.png"));
+
 
             Resume[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Resume.png"));
             Resume[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeP.png"));

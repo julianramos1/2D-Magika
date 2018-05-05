@@ -86,14 +86,18 @@ public class Chest extends StaticEntity {
 		chestInventory.tick();
 
 	}
+	
+	// TODO Terminar de fix el chest hoy during the day !!!
+	
 	@Override
 	public void render(Graphics g) {
 		caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)) || isOpen == true) {
 			isOpen = true;
 			g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-			//JOptionPane.showMessageDialog(null, "To open the door deliver 3 sticks");
+			g.drawImage(Images.requirements,(int)((x+70)-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
+		
 		else {
 			g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
