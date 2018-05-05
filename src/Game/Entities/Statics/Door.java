@@ -12,6 +12,7 @@ import java.awt.*;
 import com.sun.beans.editors.BooleanEditor;
 
 /**
+ * 
  * Created by Elemental on 2/2/2017.
  */
 
@@ -60,7 +61,7 @@ public class Door extends StaticEntity {
 
 	@Override
 	public void render(Graphics g) {
-		for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
+		for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems()) {
 			if (i.getName() == "Bone" && i.getCount() == 1) {
 				bone = true;
 			}

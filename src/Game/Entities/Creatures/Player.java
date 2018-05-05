@@ -115,11 +115,9 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().attbut) {
             checkAttacks();
         }else if(handler.getKeyManager().fattbut){
-
             fireAttack();
-
-
         }
+        
         //Debugger
         if(handler.getKeyManager().lifebut){
             health += 2;
@@ -263,7 +261,6 @@ public class Player extends CreatureBase {
 
     private void FireBallAttack(Graphics g) {
 
-
         if (lr&&LaunchedFireBall&&!LaunchedFireBallL&&!LaunchedFireBallR&&!LaunchedFireBallD&&!LaunchedFireBallU) {
             LaunchedFireBall=false;
             LaunchedFireBallL=false;
@@ -322,11 +319,7 @@ public class Player extends CreatureBase {
                 attacking=false;
             }
         }
-
-
-
-
-
+       
     }
 
     //TODO Idea .contains or .intersects
