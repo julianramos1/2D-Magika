@@ -16,6 +16,7 @@ public class EntityManager {
 
     private Handler handler;
     private Player player;
+    private Chest chest;
     private ArrayList<EntityBase> entities;
     private Comparator<EntityBase> renderSorter = new Comparator<EntityBase>(){
         @Override
@@ -26,11 +27,13 @@ public class EntityManager {
         }
     };
 
-    public EntityManager(Handler handler, Player player){
+    public EntityManager(Handler handler, Player player, Chest chest){
         this.handler = handler;
         this.player = player;
+        this.chest = chest;
         entities = new ArrayList<EntityBase>();
         addEntity(player);
+        addEntity(chest);
     }
 
     public void tick(){
@@ -71,6 +74,13 @@ public class EntityManager {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+    public Chest getChest() {
+    	return chest;
+    }
+    
+    public void setChest(Chest chest) {
+    	this.chest = chest;
     }
 
     public ArrayList<EntityBase> getEntities() {

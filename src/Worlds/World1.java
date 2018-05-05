@@ -18,10 +18,10 @@ public class World1 extends BaseWorld{
     private BaseWorld caveWorld;
     private Chest chest;
 
-    public World1(Handler handler, String path, Player player){
-        super(handler,path,player);
+    public World1(Handler handler, String path, Player player, Chest chest){
+        super(handler,path,player,chest);
         this.handler = handler;
-        caveWorld = new CaveWorld(handler,"res/Maps/finalMap.map",player);
+        caveWorld = new CaveWorld(handler,"res/Maps/finalMap.map",player,chest);
 
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Rock(handler, 100, 450));
