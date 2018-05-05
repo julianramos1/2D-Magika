@@ -9,7 +9,10 @@ import Worlds.BaseWorld;
 
 import java.awt.*;
 
+import com.sun.beans.editors.BooleanEditor;
+
 /**
+ * 
  * Created by Elemental on 2/2/2017.
  */
 
@@ -18,6 +21,7 @@ public class Door extends StaticEntity {
 
 	private Rectangle ir = new Rectangle();
 	public Boolean EP = false;
+	public Boolean bone = false;
 
 	private BaseWorld world;
 
@@ -53,12 +57,17 @@ public class Door extends StaticEntity {
 			EP=false;
 		}
 
-	}
+	} 
 
 	@Override
 	public void render(Graphics g) {
-		for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
-			if (i.getName() == "Stick" && i.getCount() >= 3) {
+		for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems()) {
+			if (i.getName() == "Bone" && i.getCount() == 1) {
+				bone = true;
+			}
+		}
+		for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
+			if ((j.getName() == "Stick" && j.getCount() >= 3) && bone == true) {
 				g.drawImage(Images.door,(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 				g.setColor(Color.black);
 				checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
@@ -66,6 +75,7 @@ public class Door extends StaticEntity {
 			}
 			return;
 		}
+
 	}
 
 	private void checkForPlayer(Graphics g, Player p) {

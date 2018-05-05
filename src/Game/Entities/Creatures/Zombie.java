@@ -200,5 +200,7 @@ public class Zombie extends CreatureBase  {
 		System.out.println(RNGR);
 		if(RNGR==1){
 			handler.getWorld().getItemManager().addItem(Item.fireRuneItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
-		}    }
+		}
+		handler.getWorld().getItemManager().addItem(Item.slime.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+		}
 }

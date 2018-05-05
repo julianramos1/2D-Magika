@@ -14,6 +14,8 @@ public class CaveWorld extends BaseWorld{
 		super(handler,path,player);
 		this.handler = handler;
 		this.player=player;
+		
+		
 	}
 
 }

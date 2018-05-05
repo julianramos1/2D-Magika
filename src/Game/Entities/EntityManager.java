@@ -1,6 +1,7 @@
 package Game.Entities;
 
 import Game.Entities.Creatures.Player;
+import Game.Entities.Statics.Chest;
 import Main.Handler;
 
 import java.awt.*;

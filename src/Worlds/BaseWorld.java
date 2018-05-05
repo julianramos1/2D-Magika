@@ -22,7 +22,6 @@ public class BaseWorld {
     protected int countP = 0;
 
     protected EntityManager entityManager;
-
     //Item
     protected ItemManager itemManager;
 
