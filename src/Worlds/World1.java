@@ -16,12 +16,13 @@ public class World1 extends BaseWorld{
 
     private Handler handler;
     private BaseWorld caveWorld;
+    private Chest caveChest;
 
     public World1(Handler handler, String path, Player player, Chest chest){
         super(handler,path,player,chest);
         this.handler = handler;
-        Chest chest2 = new Chest(handler, 1000, 0);
-        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player,chest2);
+        caveChest = new CaveWorldChest(handler, 1000, 0);
+        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player,caveChest);
 
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Rock(handler, 100, 450));
