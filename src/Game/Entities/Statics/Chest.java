@@ -67,18 +67,19 @@ public class Chest extends StaticEntity {
 		}
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0))) {
 			for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
-				if (i.getName() == "Stick" && i.getCount() >= 3) {
-					for (int j = 0; j < 3; j++) {
+				if (i.getName() == "Stick" && i.getCount() >= 1) {
+					for (int j = 0; j <= i.getCount(); j++) {
 						chestInventory.addItem(Item.stick);
 						i.setCount(i.getCount() - 1);
+						System.out.println("Added stick to chest");
 					}
-					System.out.print("Added stick to chest");
+					
 				}
 			}
 			for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
 				if (j.getName() == "Bone" && j.getCount() == 1) {
 					chestInventory.addItem(Item.bone);
-					System.out.print("Added bone to chest");
+					System.out.println("Added bone to chest");
 					j.setCount(j.getCount() - 1);
 				}
 			}
