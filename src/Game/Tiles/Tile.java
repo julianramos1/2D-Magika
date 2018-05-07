@@ -27,6 +27,7 @@ public class Tile {
     public static Tile topwallTile = new BorderTile(Images.blocks[10],10);
     public static Tile lowerwallTile = new BorderTile(Images.blocks[11],11);
     public static Tile otherFloor = new MoldyRockTile(13);
+    public static Tile iceFloor = new IceTile(14);
 
     //CLASS
 

@@ -33,6 +33,7 @@ public class Item {
     public static Item stick = new Item(Images.bush[1],"Stick",3);
     public static Item bone = new Item(Images.items[1],"Bone", 4);
     public static Item slime = new Item(Images.blocks[0],"Slime", 5);
+    public static Item snowBall = new Item(Images.snow[1],"Snowball", 6);
 
 
     //class

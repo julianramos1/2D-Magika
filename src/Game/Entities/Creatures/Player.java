@@ -9,6 +9,7 @@ import Resources.Animation;
 import Resources.Images;
 import Worlds.BaseWorld;
 import Worlds.CaveWorld;
+import Worlds.IceWorld;
 import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -45,7 +46,7 @@ public class Player extends CreatureBase {
     private int animFireSpeed = 250;
     private int FireSpeed = 2;
     private int FireMove = 0;
-    private int movexp,moveyp,movexn,moveyn,movexpar,moveypar,movexnar,moveynar,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp,tempmoveypar,tempmovexnar,tempmoveynar,tempmovexpar, fy,fx;
+    private int movexp,moveyp,movexn,moveyn,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp, fy,fx;
 
     //spells
 
@@ -125,6 +126,7 @@ public class Player extends CreatureBase {
             health += 2;
         }
         if(handler.getKeyManager().skipbut){
+        	//BaseWorld iceWorld = new IceWorld(handler,"res/Maps/finalMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
         	BaseWorld caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
         	handler.setWorld(caveWorld);
         }
@@ -179,10 +181,6 @@ public class Player extends CreatureBase {
         moveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
         movexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
         moveyn =(int) (y - handler.getGameCamera().getyOffset()) - 64;
-        movexpar = (int) (x - handler.getGameCamera().getxOffset()) + 48;
-        moveypar =(int) (y - handler.getGameCamera().getyOffset()) + 64;
-        movexnar =(int) (x - handler.getGameCamera().getxOffset()) - 48;
-        moveynar =(int) (y - handler.getGameCamera().getyOffset()) - 64;
         tempmovexp =(int) (x - handler.getGameCamera().getxOffset()) + 48;
         tempmoveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
         tempmovexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
@@ -274,7 +272,7 @@ public class Player extends CreatureBase {
 
     private void FireBallAttack(Graphics g) {
     	Rectangle ar = new Rectangle();
-         ar.width = 30;
+         ar.width = 64;
          ar.height = 30;
 
         if (lr&&LaunchedFireBall&&!LaunchedFireBallL&&!LaunchedFireBallR&&!LaunchedFireBallD&&!LaunchedFireBallU) {
@@ -308,8 +306,10 @@ public class Player extends CreatureBase {
         }
         if (LaunchedFireBallR) {
             movexp+=FireSpeed;
-            ar.x += movexp;
+            ar.x = movexp;
+            ar.y = fy;
             g.drawImage(getCurrentFireAnimationFrame(), movexp, fy, 64, 32, null);
+            g.drawRect(movexp, fy, 64, 32);
             ar.translate(movexp, 0);
             if(movexp >= tempmovexp + 64*2){
                 FireBall=false;
@@ -326,8 +326,9 @@ public class Player extends CreatureBase {
             }
         } else if (LaunchedFireBallD) {
             moveyp+=FireSpeed;
-            moveypar+=FireSpeed;
-            ar.y += moveypar;
+            ar.x = fx-6;
+            ar.y = moveyp;
+            g.drawRect(ar.x, ar.y, 32, 64);
             g.drawImage(getCurrentFireAnimationFrame(), fx-6, moveyp, 32, 64, null);
             if(moveyp >= tempmoveyp + 64*2){
                 FireBall=false;
@@ -344,8 +345,9 @@ public class Player extends CreatureBase {
             }
         } else if (LaunchedFireBallU) {
             moveyn-=FireSpeed;
-            moveynar-=FireSpeed;
-            ar.y -= moveynar;
+            ar.x = fx;
+            ar.y = moveyn;
+            g.drawRect(ar.x, ar.y, 32, 64);
             g.drawImage(getCurrentFireAnimationFrame(), fx, moveyn, 32, 64, null);
             if(moveyn <= tempmoveyn - 64*2){
                 FireBall=false;
@@ -362,8 +364,9 @@ public class Player extends CreatureBase {
             }
         } else if(LaunchedFireBallL) {   //ll
             movexn-=FireSpeed;
-            movexnar-=FireSpeed;
-            ar.x -= movexnar;
+            ar.x = movexn;
+            ar.y = fy;
+            g.drawRect(ar.x, ar.y, 64, 32);
             g.drawImage(getCurrentFireAnimationFrame(), movexn, fy, 64, 32, null);
             if(movexn <= tempmovexn - 64*2){
                 FireBall=false;

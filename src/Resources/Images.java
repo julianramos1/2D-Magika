@@ -56,6 +56,7 @@ public class Images {
     public static BufferedImage spellGUI;
     public static BufferedImage[] bush;
     public static BufferedImage[] chest;
+    public static BufferedImage[] snow;
 
 
 
@@ -77,9 +78,10 @@ public class Images {
 
 
 
-        blocks = new BufferedImage[16];
+        blocks = new BufferedImage[17];
         bush = new BufferedImage[3];
         chest = new BufferedImage[2];
+        snow = new BufferedImage[2];
 
 
         player_left = new BufferedImage[4];
@@ -233,6 +235,7 @@ public class Images {
             blocks[13] = newsheet.crop(176,0,Bwidth,Bheight*2);//tree
             blocks[14] = newsheet.crop(174,410,78,74);//rock
             blocks[15] = ImageIO.read(getClass().getResourceAsStream("/Blocks/MovingTile.png"));
+            blocks[16] = ImageIO.read(getClass().getResourceAsStream("/Blocks/iceBlock.png"));
             
             
             // Bush and trees array
@@ -242,7 +245,11 @@ public class Images {
             //Chest
             chest[0] = chestSheet.crop(0, 0, 30, 31);
             chest[1] = chestSheet.crop(32, 0, 30, 31);
-
+            
+            //Snow
+            snow[0] = ImageIO.read(getClass().getResourceAsStream("/Blocks/snow.png"));
+            snow[1] = ImageIO.read(getClass().getResourceAsStream("/Blocks/Snowball.png"));
+            
             //player anim
             player_front[0]=newsheet.crop(132,131,width,height);
             player_front[1]=newsheet.crop(164,131,width,height);
