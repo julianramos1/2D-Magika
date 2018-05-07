@@ -7,6 +7,8 @@ import Game.Items.Item;
 import Game.SpellCast.SpellCastUI;
 import Resources.Animation;
 import Resources.Images;
+import Worlds.BaseWorld;
+import Worlds.CaveWorld;
 import Main.Handler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -43,7 +45,7 @@ public class Player extends CreatureBase {
     private int animFireSpeed = 250;
     private int FireSpeed = 2;
     private int FireMove = 0;
-    private int movexp,moveyp,movexn,moveyn,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp,fy,fx;
+    private int movexp,moveyp,movexn,moveyn,movexpar,moveypar,movexnar,moveynar,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp,tempmoveypar,tempmovexnar,tempmoveynar,tempmovexpar, fy,fx;
 
     //spells
 
@@ -122,6 +124,13 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().lifebut){
             health += 2;
         }
+        if(handler.getKeyManager().skipbut){
+        	BaseWorld caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
+        	handler.setWorld(caveWorld);
+        }
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){
+            inventory.addItem(Item.fireRuneItem);
+        }
 
         //Inventory
         inventory.tick();
@@ -170,6 +179,10 @@ public class Player extends CreatureBase {
         moveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
         movexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
         moveyn =(int) (y - handler.getGameCamera().getyOffset()) - 64;
+        movexpar = (int) (x - handler.getGameCamera().getxOffset()) + 48;
+        moveypar =(int) (y - handler.getGameCamera().getyOffset()) + 64;
+        movexnar =(int) (x - handler.getGameCamera().getxOffset()) - 48;
+        moveynar =(int) (y - handler.getGameCamera().getyOffset()) - 64;
         tempmovexp =(int) (x - handler.getGameCamera().getxOffset()) + 48;
         tempmoveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
         tempmovexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
@@ -260,6 +273,9 @@ public class Player extends CreatureBase {
 
 
     private void FireBallAttack(Graphics g) {
+    	Rectangle ar = new Rectangle();
+         ar.width = 30;
+         ar.height = 30;
 
         if (lr&&LaunchedFireBall&&!LaunchedFireBallL&&!LaunchedFireBallR&&!LaunchedFireBallD&&!LaunchedFireBallU) {
             LaunchedFireBall=false;
@@ -292,31 +308,75 @@ public class Player extends CreatureBase {
         }
         if (LaunchedFireBallR) {
             movexp+=FireSpeed;
+            ar.x += movexp;
             g.drawImage(getCurrentFireAnimationFrame(), movexp, fy, 64, 32, null);
+            ar.translate(movexp, 0);
             if(movexp >= tempmovexp + 64*2){
                 FireBall=false;
                 attacking=false;
             }
+            for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){
+                if(e.equals(this))
+                    continue;
+                if(e.getCollisionBounds(0, 0).intersects(ar)){
+                    e.hurt(attack);
+                    System.out.println(e + " has " + e.getHealth() + " lives.");
+                    return;
+                }
+            }
         } else if (LaunchedFireBallD) {
             moveyp+=FireSpeed;
+            moveypar+=FireSpeed;
+            ar.y += moveypar;
             g.drawImage(getCurrentFireAnimationFrame(), fx-6, moveyp, 32, 64, null);
             if(moveyp >= tempmoveyp + 64*2){
                 FireBall=false;
                 attacking=false;
             }
+            for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){
+                if(e.equals(this))
+                    continue;
+                if(e.getCollisionBounds(0, 0).intersects(ar)){
+                    e.hurt(attack);
+                    System.out.println(e + " has " + e.getHealth() + " lives.");
+                    return;
+                }
+            }
         } else if (LaunchedFireBallU) {
             moveyn-=FireSpeed;
+            moveynar-=FireSpeed;
+            ar.y -= moveynar;
             g.drawImage(getCurrentFireAnimationFrame(), fx, moveyn, 32, 64, null);
             if(moveyn <= tempmoveyn - 64*2){
                 FireBall=false;
                 attacking=false;
             }
+            for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){
+                if(e.equals(this))
+                    continue;
+                if(e.getCollisionBounds(0, 0).intersects(ar)){
+                    e.hurt(attack);
+                    System.out.println(e + " has " + e.getHealth() + " lives.");
+                    return;
+                }
+            }
         } else if(LaunchedFireBallL) {   //ll
             movexn-=FireSpeed;
+            movexnar-=FireSpeed;
+            ar.x -= movexnar;
             g.drawImage(getCurrentFireAnimationFrame(), movexn, fy, 64, 32, null);
             if(movexn <= tempmovexn - 64*2){
                 FireBall=false;
                 attacking=false;
+            }
+            for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){
+                if(e.equals(this))
+                    continue;
+                if(e.getCollisionBounds(0, 0).intersects(ar)){
+                    e.hurt(attack);
+                    System.out.println(e + " has " + e.getHealth() + " lives.");
+                    return;
+                }
             }
         }
        

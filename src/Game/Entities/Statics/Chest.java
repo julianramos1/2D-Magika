@@ -6,13 +6,16 @@ import Game.Entities.Creatures.Player;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
+import Game.SpellCast.SpellCastUI;
 import Game.Tiles.Tile;
 import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
 import Worlds.CaveWorld;
+import Worlds.World1;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JOptionPane;
 
@@ -25,6 +28,8 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 
 
 public class Chest extends StaticEntity {
+
+	private SpellCastUI chestGUI;
 
 	public Rectangle ir = new Rectangle();
 	public Boolean EP = false;
@@ -49,6 +54,7 @@ public class Chest extends StaticEntity {
 		ir.x=irx;
 
 		chestInventory = new Inventory(handler);
+		chestGUI= new SpellCastUI(handler);
 	}
 
 	@Override
@@ -65,6 +71,9 @@ public class Chest extends StaticEntity {
 		}else if(!handler.getKeyManager().attbut){
 			EP=false;
 		}
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)){
+			handler.getWorld().getEntityManager().getChest().getChestInventory().setActive(false);
+		}
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0))) {
 			for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
 				if (i.getName() == "Stick" && i.getCount() >= 1) {
@@ -73,7 +82,7 @@ public class Chest extends StaticEntity {
 						i.setCount(i.getCount() - 1);
 						System.out.println("Added stick to chest");
 					}
-					
+
 				}
 			}
 			for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
@@ -85,25 +94,28 @@ public class Chest extends StaticEntity {
 			}
 		}
 		chestInventory.tick();
+		chestGUI.tick();
 
 	}
-	
+
 	// TODO Terminar de fix el chest hoy during the day !!!
-	
+
 	@Override
 	public void render(Graphics g) {
 		caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
+//		if(handler.getWorld() == caveWorld ){
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)) || isOpen == true) {
 			isOpen = true;
 			g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 			g.drawImage(Images.requirements,(int)((x+70)-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
-		
+
 		else {
 			g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
 		g.setColor(Color.black);
 		checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
+//		}
 	}
 
 	private void checkForPlayer(Graphics g, Player p) {
@@ -129,5 +141,8 @@ public class Chest extends StaticEntity {
 	}
 	public Inventory getChestInventory() {
 		return chestInventory;
+	}
+	public SpellCastUI getChestGUI() {
+		return chestGUI;
 	}
 }

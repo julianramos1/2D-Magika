@@ -68,7 +68,7 @@ public class Door extends StaticEntity {
 			}
 		}
 		for (Item j : handler.getWorld().getEntityManager().getChest().getChestInventory().getInventoryItems()) {
-			if (j.getName() == "Stick" && j.getCount() >= 3) {
+			if (j.getName() == "Stick" && j.getCount() >= 6) {
 				stick = true;
 			}
 		}

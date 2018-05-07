@@ -43,7 +43,7 @@ public class KeyManager implements KeyListener {
 
 		attbut = keys[KeyEvent.VK_E];
 		fattbut = keys[KeyEvent.VK_C];
-		skipbut = keys[KeyEvent.VK_I];
+		skipbut = keys[KeyEvent.VK_N];
 		lifebut = keys[KeyEvent.VK_I];
 		pbutt = keys[KeyEvent.VK_ESCAPE];
 
