@@ -30,7 +30,6 @@ public class BaseWorld {
 
 
     public BaseWorld(Handler handler, String path, Player player, Chest chest) {
-
         this.handler=handler;
         entityManager = new EntityManager(handler,player,chest);
         itemManager=new ItemManager(handler);

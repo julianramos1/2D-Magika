@@ -1,5 +1,6 @@
 package Worlds;
 import Game.Entities.Creatures.Player;
+import Game.Entities.Creatures.Zombie;
 import Game.Entities.Statics.Chest;
 import Game.Entities.Statics.Door;
 import Main.Handler;
@@ -18,7 +19,8 @@ public class CaveWorld extends BaseWorld{
 		this.player=player;
 		this.chest=chest;
 		
-		
+        entityManager.addEntity(new Zombie(handler, 1000, 500));
+
 	}
 
 }
