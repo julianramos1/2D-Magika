@@ -44,9 +44,6 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Bush(handler, 1111, 1000));
 
 
-        entityManager.addEntity(new Chest(handler, 1000, 0));
-
-
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
        

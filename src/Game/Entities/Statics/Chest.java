@@ -1,9 +1,11 @@
 package Game.Entities.Statics;
 
-import Game.Entities.EntityBase;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
 import Game.Entities.EntityManager;
 import Game.Entities.Creatures.Player;
-import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Game.Tiles.Tile;
@@ -11,13 +13,6 @@ import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
 import Worlds.CaveWorld;
-
-import java.awt.*;
-
-import javax.swing.JOptionPane;
-
-import com.sun.corba.se.spi.activation.InitialNameServiceOperations;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * Created by Elemental on 2/2/2017.
@@ -32,6 +27,8 @@ public class Chest extends StaticEntity {
 	protected EntityManager entityManager;
 	private BaseWorld caveWorld;
 	public boolean isOpen = false;
+	private int sticks = 6;
+	private int bone = 1;
 
 	public Chest(Handler handler, float x, float y) {
 		super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
@@ -51,7 +48,7 @@ public class Chest extends StaticEntity {
 		chestInventory = new Inventory(handler);
 	}
 
-	@Override
+
 	public void tick() {
 
 		if(isBeinghurt()){
@@ -69,30 +66,38 @@ public class Chest extends StaticEntity {
 			for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
 				if (i.getName() == "Stick" && i.getCount() >= 1) {
 					for (int j = 0; j <= i.getCount(); j++) {
+						if (sticks > 0) {
 						chestInventory.addItem(Item.stick);
 						i.setCount(i.getCount() - 1);
+						sticks --;
 						System.out.println("Added stick to chest");
+						}
 					}
 					
 				}
 			}
 			for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
 				if (j.getName() == "Bone" && j.getCount() == 1) {
+					if (bone > 0) {
 					chestInventory.addItem(Item.bone);
+					bone--;
 					System.out.println("Added bone to chest");
 					j.setCount(j.getCount() - 1);
+					}
 				}
 			}
 		}
 		chestInventory.tick();
-
+		
 	}
+
 	
-	// TODO Terminar de fix el chest hoy during the day !!!
 	
 	@Override
 	public void render(Graphics g) {
+		
 		caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
+		
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)) || isOpen == true) {
 			isOpen = true;
 			g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
@@ -102,6 +107,12 @@ public class Chest extends StaticEntity {
 		else {
 			g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
+		if(isOpen == true){
+			update(g, "bone");
+			update(g, "sticks");
+		}
+		
+		
 		g.setColor(Color.black);
 		checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
 	}
@@ -122,12 +133,24 @@ public class Chest extends StaticEntity {
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}
-
 	@Override
 	public void die() {
-
+		// Without this, the class blows up
+		
 	}
+
 	public Inventory getChestInventory() {
 		return chestInventory;
 	}
+	public void update(Graphics g, String object ) {
+		g.setColor(Color.black);
+		tick();
+		if (object.equals("bone")) {
+			g.drawString("" + bone,(int) ((x+110)-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()+21));
+		}
+		else if(object.equals("sticks")) {
+			g.drawString("" + sticks,(int) ((x+110)-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()+51));
+		}
+	}
+	
 }
