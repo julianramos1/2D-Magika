@@ -92,26 +92,11 @@ public class IceChest extends Chest {
 			}
 			IceChestInventory.tick();
 
-			//TODO work on this l8er
 			if(snowballs == 0 && healthPowerUp == false) {
-				handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth()+10);
+				handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth()+30);
 				healthPowerUp = true;
 			}
 		}
-		//			for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
-		//				if (e.equals(this))
-		//					continue;
-		//				if (e.) {
-		//					e.getHealth();
-		//					if (e.getHealth() <= 0) {
-		//						State.setState(handler.getGame().winState);
-		//
-		//					}
-		//				}
-		//			}
-
-
-		//		}
 	}
 
 
@@ -157,7 +142,6 @@ public class IceChest extends Chest {
 	@Override
 	public void die() {
 		// Without this, the class blows up
-
 	}
 
 	public Inventory getIceChestInventory() {

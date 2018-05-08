@@ -197,7 +197,6 @@ public class Zombie extends CreatureBase  {
 		}
 	}
 
-	//TODO CHANGE TO ZOMBIE
 
 	@Override
 	public void render(Graphics g) {
@@ -210,7 +209,6 @@ public class Zombie extends CreatureBase  {
 
 
 
-	// TODO CHANGE ITEM DROPPED
 	@Override
 	public void die() {
 		randint=new Random();

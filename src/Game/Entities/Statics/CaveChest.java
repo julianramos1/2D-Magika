@@ -37,8 +37,9 @@ public class CaveChest extends Chest {
 	protected EntityManager entityManager;
 	private BaseWorld caveWorld;
 	public boolean isOpen = false;
+	private boolean healthPowerUp;
 	private int slime = 1;
-	private int rocks = 16;
+	private int rocks = 10;
 
 	public CaveChest(Handler handler, float x, float y) {
 		super(handler, x, y);
@@ -101,6 +102,10 @@ public class CaveChest extends Chest {
 			}
 		}
 		caveChestInventory.tick();
+		if(rocks == 0 && healthPowerUp == false) {
+			handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth()+20);
+			healthPowerUp = true;
+		}
 	}
 
 	@Override
