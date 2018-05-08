@@ -34,8 +34,8 @@ public class IceGolem extends CreatureBase  {
 
 	public IceGolem(Handler handler, float x, float y) {
 		super(handler, x, y, 120, 120);
-		bounds.x=8*2;
-		bounds.y=18*2;
+		bounds.x=0;
+		bounds.y=0;
 		bounds.width=120;
 		bounds.height=120;
 		speed=1.5f;
@@ -106,7 +106,7 @@ public class IceGolem extends CreatureBase  {
 		if (IceGolemCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
 				|| IceGolemCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
 
-			Rectangle cb = getCollisionBounds(0, 0);
+			Rectangle cb = getCollisionBounds(0,0);
 			Rectangle ar = new Rectangle();
 			int arSize = 13;
 			ar.width = arSize;
