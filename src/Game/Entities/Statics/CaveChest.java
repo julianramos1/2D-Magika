@@ -77,24 +77,24 @@ public class CaveChest extends Chest {
 		}
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0))) {
 			for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
-				if (i.getName() == "Slime" && i.getCount() >= 1) {
+				if (i.getName() == "Rock" && i.getCount() >= 1) {
 					for (int j = 0; j <= i.getCount(); j++) {
-						if (slime > 0) {
-							caveChestInventory.addItem(Item.slime);
+						if (rocks > 0) {
+							caveChestInventory.addItem(Item.rockItem);
 							i.setCount(i.getCount() - 1);
-							slime --;
-							System.out.println("Added slime to chest");
+							rocks --;
+							System.out.println("Added rock to chest");
 						}
 					}
 
 				}
 			}
 			for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
-				if (j.getName() == "Rock" && j.getCount() >= 1) {
-					if (rocks > 0) {
-						caveChestInventory.addItem(Item.rockItem);
-						rocks--;
-						System.out.println("Added rock to chest");
+				if (j.getName() == "Slime" && j.getCount() == 1) {
+					if (slime > 0) {
+						caveChestInventory.addItem(Item.slime);
+						slime--;
+						System.out.println("Added slime to chest");
 						j.setCount(j.getCount() - 1);
 					}
 				}
@@ -111,7 +111,7 @@ public class CaveChest extends Chest {
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)) || isOpen == true) {
 			isOpen = true;
 			g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-			g.drawImage(Images.requirements,(int)((x+70)-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+			g.drawImage(Images.caveWorldQuest,(int)((x+70)-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
 
 		else {
