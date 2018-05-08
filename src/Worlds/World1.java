@@ -49,5 +49,14 @@ public class World1 extends BaseWorld{
        
 
     }
+    @Override
+    public void tick() {
+    	// TODO Auto-generated method stub
+    	super.tick();
+    	if(handler.getKeyManager().skipbut){
+			BaseWorld caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), caveChest);
+			handler.setWorld(caveWorld);
+		}
+    }
 
 }

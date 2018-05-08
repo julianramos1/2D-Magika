@@ -1,9 +1,12 @@
 package Worlds;
+import com.sun.glass.events.KeyEvent;
+
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.Zombie;
 import Game.Entities.Statics.CaveDoor;
 import Game.Entities.Statics.Chest;
 import Game.Entities.Statics.Door;
+import Game.Entities.Statics.IceChest;
 import Game.Entities.Statics.Rock;
 import Main.Handler;
 
@@ -13,15 +16,15 @@ import Main.Handler;
 public class CaveWorld extends BaseWorld{
 	private Handler handler;
 	private Player player;
-	private Chest chest;
+	private Chest iceChest;
     private BaseWorld iceWorld;
 	
 	public CaveWorld(Handler handler, String path, Player player, Chest chest) {
 		super(handler,path,player,chest);
 		this.handler = handler;
 		this.player=player;
-		this.chest=chest;
-        iceWorld = new IceWorld(handler,"res/Maps/finalMap.map",player,chest);
+		iceChest = new IceChest(handler, 1300, 0);
+        iceWorld = new IceWorld(handler,"res/Maps/finalMap.map",player,iceChest);
 		
         entityManager.addEntity(new Zombie(handler, 1000, 500));
         entityManager.addEntity(new CaveDoor(handler, 100, 0, iceWorld));
@@ -55,5 +58,14 @@ public class CaveWorld extends BaseWorld{
         entityManager.addEntity(new Rock(handler, 1100, 800));
 
 
+	}
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		super.tick();
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)){
+			BaseWorld iceWorld = new IceWorld(handler,"res/Maps/finalMap.map",handler.getWorld().getEntityManager().getPlayer(), iceChest);
+			handler.setWorld(iceWorld);
+		}
 	}
 }
