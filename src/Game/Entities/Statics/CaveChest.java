@@ -37,9 +37,8 @@ public class CaveChest extends Chest {
 	protected EntityManager entityManager;
 	private BaseWorld caveWorld;
 	public boolean isOpen = false;
-	private int sticks = 6;
-	private int bone = 2;
 	private int slime = 1;
+	private int rocks = 16;
 
 	public CaveChest(Handler handler, float x, float y) {
 		super(handler, x, y);
@@ -80,10 +79,10 @@ public class CaveChest extends Chest {
 			for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
 				if (i.getName() == "Slime" && i.getCount() >= 1) {
 					for (int j = 0; j <= i.getCount(); j++) {
-						if (sticks > 0) {
+						if (slime > 0) {
 							caveChestInventory.addItem(Item.slime);
 							i.setCount(i.getCount() - 1);
-							sticks --;
+							slime --;
 							System.out.println("Added slime to chest");
 						}
 					}
@@ -92,10 +91,10 @@ public class CaveChest extends Chest {
 			}
 			for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
 				if (j.getName() == "Bone" && j.getCount() == 1) {
-					if (bone > 0) {
-						caveChestInventory.addItem(Item.bone);
-						bone--;
-						System.out.println("Added bone to chest");
+					if (rocks > 0) {
+						caveChestInventory.addItem(Item.rockItem);
+						rocks--;
+						System.out.println("Added rock to chest");
 						j.setCount(j.getCount() - 1);
 					}
 				}
@@ -119,14 +118,14 @@ public class CaveChest extends Chest {
 			g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
 		}
 		if(isOpen == true){
-			update(g, "bone");
-			update(g, "sticks");
+			update(g, "Slime");
+			update(g, "Rocks");
 		}
 
 
 		g.setColor(Color.black);
 		checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
-		//		}
+		
 	}
 
 	private void checkForPlayer(Graphics g, Player p) {
@@ -158,11 +157,11 @@ public class CaveChest extends Chest {
 	public void update(Graphics g, String object ) {
 		g.setColor(Color.black);
 		tick();
-		if (object.equals("bone")) {
-			g.drawString("" + bone,(int) ((x+110)-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()+21));
+		if (object.equals("Slime")) {
+			g.drawString("" + slime,(int) ((x+110)-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()+21));
 		}
-		else if(object.equals("sticks")) {
-			g.drawString("" + sticks,(int) ((x+110)-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()+51));
+		else if(object.equals("Rocks")) {
+			g.drawString("" + rocks,(int) ((x+110)-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()+51));
 		}
 	}
 }

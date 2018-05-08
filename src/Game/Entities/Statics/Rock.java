@@ -33,40 +33,40 @@ public class Rock extends StaticEntity {
         bounds.height = 64;
         health=16;
 
-        try {
-            audioFile = new File("res/music/Pickaxe.wav");
-            audioStream = AudioSystem.getAudioInputStream(audioFile);
-            format = audioStream.getFormat();
-            info = new DataLine.Info(Clip.class, format);
-            audioClip = (Clip) AudioSystem.getLine(info);
-            audioClip.open(audioStream);
-
-
-
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            audioFile = new File("res/music/Pickaxe.wav");
+//            audioStream = AudioSystem.getAudioInputStream(audioFile);
+//            format = audioStream.getFormat();
+//            info = new DataLine.Info(Clip.class, format);
+//            audioClip = (Clip) AudioSystem.getLine(info);
+//            audioClip.open(audioStream);
+//
+//
+//
+//        } catch (UnsupportedAudioFileException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (LineUnavailableException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
     @Override
     public void tick() {
-        if(isBeinghurt()){
-            audioClip.start();
-        }
-        if(!isBeinghurt() && !handler.getKeyManager().attbut){
-            audioClip.stop();
-        }
-        if(!isActive()){
-            audioClip.stop();
+//        if(isBeinghurt()){
+//            audioClip.start();
+//        }
+//        if(!isBeinghurt() && !handler.getKeyManager().attbut){
+//            audioClip.stop();
+//        }
+//        if(!isActive()){
+//            audioClip.stop();
 
         }
 
-    }
+   // }
 
     @Override
     public void render(Graphics g) {
