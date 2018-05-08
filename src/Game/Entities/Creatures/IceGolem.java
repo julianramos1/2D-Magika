@@ -159,24 +159,43 @@ public class IceGolem extends CreatureBase  {
 
 				xMove = speed;
 			}
+			if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) ) {//nada
+				yMove = 0;
+			} else if (y < handler.getWorld().getEntityManager().getPlayer().getY() && health < 31) {//move down
+				yMove = speed + speed/2;
 
+			} else if (y > handler.getWorld().getEntityManager().getPlayer().getY() && health < 31) {//move up
+				yMove = -(speed + speed/2);
+
+			} else if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8)) {//nada
+				yMove = 0;
+			} else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {//move down
+				yMove = -speed;
+
+			} else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {//move up
+				yMove = speed;
+			}
 		}
-		if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) ) {//nada
-			yMove = 0;
-		} else if (y < handler.getWorld().getEntityManager().getPlayer().getY() && health < 31) {//move down
-			yMove = speed + speed/2;
+		else {
 
-		} else if (y > handler.getWorld().getEntityManager().getPlayer().getY() && health < 31) {//move up
-			yMove = -(speed + speed/2);
 
-		} else if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8)) {//nada
-			yMove = 0;
-		} else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {//move down
-			yMove = -speed;
+			switch (direction) {
+			case 1://up
+				yMove = -speed;
+				break;
+			case 2://down
+				yMove = speed;
+				break;
+			case 3://left
+				xMove = -speed;
+				break;
+			case 4://right
+				xMove = speed;
+				break;
 
-		} else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {//move up
-			yMove = speed;
+			}
 		}
+
 	}
 
 
