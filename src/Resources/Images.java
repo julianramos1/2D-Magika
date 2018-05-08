@@ -49,6 +49,7 @@ public class Images {
     public static BufferedImage[] Resume;
     public static BufferedImage requirements;
     public static BufferedImage caveWorldQuest;
+    public static BufferedImage IceWorldQuest;
     public static BufferedImage[] BTitle;
     public static BufferedImage[] Options;
     public static BufferedImage[] Runes;
@@ -141,6 +142,7 @@ public class Images {
             YouWin = ImageIO.read(getClass().getResourceAsStream("/Buttons/YOUWIN.png"));
             requirements = ImageIO.read(getClass().getResourceAsStream("/Sheets/requirements.png"));
             caveWorldQuest = ImageIO.read(getClass().getResourceAsStream("/Sheets/caveWorldQuest.png"));
+            IceWorldQuest = ImageIO.read(getClass().getResourceAsStream("/Sheets/IceQuest.png"));
 
 
 

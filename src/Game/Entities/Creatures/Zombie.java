@@ -48,7 +48,6 @@ public class Zombie extends CreatureBase  {
 		randint = new Random();
 		direction = randint.nextInt(4) + 1;
 
-		// TODO CHANGE TO ZOMBIE ANIMS
 		animDown = new Animation(animWalkingSpeed, Images.ZombieEnemy_front);
 		animLeft = new Animation(animWalkingSpeed,Images.ZombieEnemy_left);
 		animRight = new Animation(animWalkingSpeed,Images.ZombieEnemy_right);
@@ -194,7 +193,6 @@ public class Zombie extends CreatureBase  {
 // TODO CHANGE ITEM DROPPED
 	@Override
 	public void die() {
-		//State.setState(handler.getGame().winState);
 		randint=new Random();
 		RNGR=randint.nextInt(1) + 1;
 		System.out.println(RNGR);

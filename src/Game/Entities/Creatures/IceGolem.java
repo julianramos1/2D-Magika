@@ -30,6 +30,7 @@ public class IceGolem extends CreatureBase  {
 	private int moveCount=0;
 	private int direction;
 	private int RNGR;
+	public boolean isDead = false; 
 
 	public IceGolem(Handler handler, float x, float y) {
 		super(handler, x, y, 120, 120);
@@ -200,5 +201,10 @@ public class IceGolem extends CreatureBase  {
 			handler.getWorld().getItemManager().addItem(Item.fireRuneItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
 		}
 		handler.getWorld().getItemManager().addItem(Item.snowBall.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+		isDead = true;
+	}
+
+	public boolean getIsDead() {
+		return isDead;
 	}
 }

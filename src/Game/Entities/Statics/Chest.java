@@ -29,6 +29,7 @@ public class Chest extends StaticEntity {
 	public Boolean EP = false;
 	private Inventory chestInventory;
 	public Inventory caveChestInventory;
+	public Inventory IceChestInventory;
 	protected EntityManager entityManager;
 	private BaseWorld caveWorld;
 	public boolean isOpen = false;
@@ -52,6 +53,7 @@ public class Chest extends StaticEntity {
 
 		chestInventory = new Inventory(handler);
 		caveChestInventory = new Inventory(handler);
+		IceChestInventory = new Inventory(handler);
 		chestGUI= new SpellCastUI(handler);
 	}
 
