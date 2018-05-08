@@ -1,5 +1,6 @@
 package Game.Entities;
 
+import Game.Entities.Creatures.IceGolem;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Statics.Chest;
 import Main.Handler;
@@ -17,6 +18,7 @@ public class EntityManager {
     private Handler handler;
     private Player player;
     private Chest chest;
+    private IceGolem golem;
     private ArrayList<EntityBase> entities;
     private Comparator<EntityBase> renderSorter = new Comparator<EntityBase>(){
         @Override
@@ -74,6 +76,10 @@ public class EntityManager {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+    
+    public void getGolem(IceGolem golem) {
+    	this.golem = golem;
     }
     public Chest getChest() {
     	return chest;

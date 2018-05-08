@@ -38,6 +38,7 @@ public class IceChest extends Chest {
 	protected EntityManager entityManager;
 	private BaseWorld caveWorld;
 	public boolean isOpen = false;
+	public boolean healthPowerUp = false;
 	private int snowballs = 5;
 
 	public IceChest(Handler handler, float x, float y) {
@@ -86,27 +87,31 @@ public class IceChest extends Chest {
 						}
 					}
 
+
 				}
 			}
+			IceChestInventory.tick();
+
+			//TODO work on this l8er
+			if(snowballs == 0 && healthPowerUp == false) {
+				handler.getWorld().getEntityManager().getPlayer().setHealth(handler.getWorld().getEntityManager().getPlayer().getHealth()+10);
+				healthPowerUp = true;
+			}
 		}
-		IceChestInventory.tick();
-
-		//TODO work on this l8er
-//		if(snowballs == 0) {
-//			for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
-//				if (e.equals(this))
-//					continue;
-//				if (e.) {
-//					e.getHealth();
-//					if (e.getHealth() <= 0) {
-//						State.setState(handler.getGame().winState);
-//
-//					}
-//				}
-//			}
+		//			for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
+		//				if (e.equals(this))
+		//					continue;
+		//				if (e.) {
+		//					e.getHealth();
+		//					if (e.getHealth() <= 0) {
+		//						State.setState(handler.getGame().winState);
+		//
+		//					}
+		//				}
+		//			}
 
 
-//		}
+		//		}
 	}
 
 

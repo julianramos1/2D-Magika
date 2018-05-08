@@ -1,6 +1,7 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Main.Handler;
@@ -220,10 +221,10 @@ public class IceGolem extends CreatureBase  {
 			handler.getWorld().getItemManager().addItem(Item.fireRuneItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
 		}
 		handler.getWorld().getItemManager().addItem(Item.snowBall.createNew((int)x + bounds.x,(int)y + bounds.y,1));
-		isDead = true;
-	}
+		State.setState(handler.getGame().winState);
 
-	public boolean getIsDead() {
-		return isDead;
 	}
+	
+
+	
 }
