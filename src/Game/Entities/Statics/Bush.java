@@ -76,7 +76,7 @@ public class Bush extends StaticEntity {
 	@Override
 	public void die() {
         randint=new Random();
-        handler.getWorld().getItemManager().addItem(Item.stick.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
+        handler.getWorld().getItemManager().addItem(Item.stick.createNew((int)x + bounds.x + (randint.nextInt(32)),(int)y + bounds.y+(randint.nextInt(32)),(randint.nextInt(3) +1)));
 
 	}
 

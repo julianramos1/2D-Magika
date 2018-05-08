@@ -90,7 +90,7 @@ public class CaveChest extends Chest {
 				}
 			}
 			for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
-				if (j.getName() == "Bone" && j.getCount() == 1) {
+				if (j.getName() == "Rock" && j.getCount() >= 1) {
 					if (rocks > 0) {
 						caveChestInventory.addItem(Item.rockItem);
 						rocks--;

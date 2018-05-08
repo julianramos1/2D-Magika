@@ -28,6 +28,10 @@ public class Images {
     public static BufferedImage[] ZombieEnemy_left;
     public static BufferedImage[] ZombieEnemy_front;
     public static BufferedImage[] ZombieEnemy_back;
+    public static BufferedImage[] IceGolem_right;
+    public static BufferedImage[] IceGolem_left;
+    public static BufferedImage[] IceGolem_front;
+    public static BufferedImage[] IceGolem_back;
     public static BufferedImage[] butstart;
     public static BufferedImage[] particleSmoke;
     public static BufferedImage[] items;
@@ -98,6 +102,11 @@ public class Images {
         ZombieEnemy_right = new BufferedImage[3];
         ZombieEnemy_front = new BufferedImage[3];
         ZombieEnemy_back = new BufferedImage[3];
+        
+        IceGolem_left = new BufferedImage[3];
+        IceGolem_right = new BufferedImage[3];
+        IceGolem_front = new BufferedImage[3];
+        IceGolem_back = new BufferedImage[3];
 
         butstart = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
@@ -308,6 +317,23 @@ public class Images {
             ZombieEnemy_right[0]=zombieSheet.crop(7, 83, 40, 77);
             ZombieEnemy_right[1]=zombieSheet.crop(63, 83, 28, 77);
             ZombieEnemy_right[2]=zombieSheet.crop(101, 83, 40, 77);
+            
+            //Ice Golem anim
+            IceGolem_front[0]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemL.png"));
+            IceGolem_front[1]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemLW.png"));
+            IceGolem_front[2]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemLW2.png"));
+
+            IceGolem_back[0]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemL.png"));
+            IceGolem_back[1]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemLW.png"));
+            IceGolem_back[2]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemLW2.png"));
+            
+            IceGolem_left[0]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemL.png"));
+            IceGolem_left[1]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemLW.png"));
+            IceGolem_left[2]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemLW2.png"));
+            
+            IceGolem_right[0]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemR.png"));
+            IceGolem_right[1]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemRW.png"));
+            IceGolem_right[2]=ImageIO.read(getClass().getResourceAsStream("/Sheets/iceGolemRW2.png"));
 
 
         } catch (IOException e) {

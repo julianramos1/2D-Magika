@@ -126,9 +126,9 @@ public class Player extends CreatureBase {
             health += 2;
         }
         if(handler.getKeyManager().skipbut){
-        	//BaseWorld iceWorld = new IceWorld(handler,"res/Maps/finalMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
+        	BaseWorld iceWorld = new IceWorld(handler,"res/Maps/finalMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
         	BaseWorld caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
-        	handler.setWorld(caveWorld);
+        	handler.setWorld(iceWorld);
         }
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){
             inventory.addItem(Item.fireRuneItem);

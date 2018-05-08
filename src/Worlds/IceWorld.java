@@ -1,4 +1,5 @@
 package Worlds;
+import Game.Entities.Creatures.IceGolem;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Creatures.Zombie;
@@ -19,7 +20,7 @@ public class IceWorld extends BaseWorld{
 		this.handler = handler;
 		this.player=player;
 		
-        entityManager.addEntity(new SkelyEnemy(handler, 1000, 500));
+        //entityManager.addEntity(new SkelyEnemy(handler, 1000, 500));
         entityManager.addEntity(new Snow(handler, 300, 500));
         entityManager.addEntity(new Snow(handler, 1000, 400));
         entityManager.addEntity(new Snow(handler, 250, 100));
@@ -27,6 +28,7 @@ public class IceWorld extends BaseWorld{
         entityManager.addEntity(new Snow(handler, 730, 200));
         entityManager.addEntity(new Snow(handler, 400, 234));
         entityManager.addEntity(new Snow(handler, 900, 87));
+        entityManager.addEntity(new IceGolem(handler, 1000, 500));
 
 	}
 
