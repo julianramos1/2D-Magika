@@ -44,6 +44,7 @@ public class Images {
     
     public static BufferedImage[] Resume;
     public static BufferedImage requirements;
+    public static BufferedImage caveWorldQuest;
     public static BufferedImage[] BTitle;
     public static BufferedImage[] Options;
     public static BufferedImage[] Runes;
@@ -130,6 +131,8 @@ public class Images {
             GameOver = ImageIO.read(getClass().getResourceAsStream("/Buttons/GameOver.png"));
             YouWin = ImageIO.read(getClass().getResourceAsStream("/Buttons/YOUWIN.png"));
             requirements = ImageIO.read(getClass().getResourceAsStream("/Sheets/requirements.png"));
+            caveWorldQuest = ImageIO.read(getClass().getResourceAsStream("/Sheets/caveWorldQuest.png"));
+
 
 
             Resume[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Resume.png"));
