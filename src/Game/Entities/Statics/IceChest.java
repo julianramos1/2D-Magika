@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import Game.Entities.EntityBase;
 import Game.Entities.EntityManager;
 import Game.Entities.Creatures.IceGolem;
 import Game.Entities.Creatures.Player;
@@ -38,8 +39,6 @@ public class IceChest extends Chest {
 	private BaseWorld caveWorld;
 	public boolean isOpen = false;
 	private int snowballs = 5;
-	
-	private IceGolem golem;
 
 	public IceChest(Handler handler, float x, float y) {
 		super(handler, x, y);
@@ -93,70 +92,78 @@ public class IceChest extends Chest {
 		IceChestInventory.tick();
 
 		//TODO work on this l8er
-		if(snowballs == 0) {
-			
-				State.setState(handler.getGame().winState);
-			
+//		if(snowballs == 0) {
+//			for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
+//				if (e.equals(this))
+//					continue;
+//				if (e.) {
+//					e.getHealth();
+//					if (e.getHealth() <= 0) {
+//						State.setState(handler.getGame().winState);
+//
+//					}
+//				}
+//			}
+
+
+//		}
+	}
+
+
+
+	@Override
+	public void render(Graphics g) {
+
+		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)) || isOpen == true) {
+			isOpen = true;
+			g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+			g.drawImage(Images.IceWorldQuest,(int)((x+70)-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+		}
+
+		else {
+			g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+		}
+		if(isOpen == true){
+			update(g, "Snowball");
+		}
+
+
+		g.setColor(Color.black);
+		checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
+
+	}
+
+	private void checkForPlayer(Graphics g, Player p) {
+		Rectangle pr = p.getCollisionBounds(0,0);
+
+		if(ir.contains(pr) && !EP){
+			g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
+		}else if(ir.contains(pr) && EP){
+			g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
+
+		}
+
+
+	}
+
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+	@Override
+	public void die() {
+		// Without this, the class blows up
+
+	}
+
+	public Inventory getIceChestInventory() {
+		return IceChestInventory;
+	}
+
+	public void update(Graphics g, String object ) {
+		g.setColor(Color.black);
+		tick();
+		if (object.equals("Snowball")) {
+			g.drawString("" + snowballs,(int) ((x+110)-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()+21));
 		}
 	}
-
-
-
-@Override
-public void render(Graphics g) {
-
-	caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",handler.getWorld().getEntityManager().getPlayer(), handler.getWorld().getEntityManager().getChest());
-
-	if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0)) || isOpen == true) {
-		isOpen = true;
-		g.drawImage(Images.chest[1],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-		g.drawImage(Images.IceWorldQuest,(int)((x+70)-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-	}
-
-	else {
-		g.drawImage(Images.chest[0],(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-	}
-	if(isOpen == true){
-		update(g, "Snowball");
-	}
-
-
-	g.setColor(Color.black);
-	checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
-
-}
-
-private void checkForPlayer(Graphics g, Player p) {
-	Rectangle pr = p.getCollisionBounds(0,0);
-
-	if(ir.contains(pr) && !EP){
-		g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
-	}else if(ir.contains(pr) && EP){
-		g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
-
-	}
-
-
-}
-
-public EntityManager getEntityManager() {
-	return entityManager;
-}
-@Override
-public void die() {
-	// Without this, the class blows up
-
-}
-
-public Inventory getIceChestInventory() {
-	return IceChestInventory;
-}
-
-public void update(Graphics g, String object ) {
-	g.setColor(Color.black);
-	tick();
-	if (object.equals("Snowball")) {
-		g.drawString("" + snowballs,(int) ((x+110)-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()+21));
-	}
-}
 }

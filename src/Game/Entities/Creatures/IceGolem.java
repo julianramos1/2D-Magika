@@ -98,10 +98,10 @@ public class IceGolem extends CreatureBase  {
 		xMove = 0;
 		yMove = 0;
 
-		IceGolemCam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
-		IceGolemCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
-		IceGolemCam.width = 64 * 7;
-		IceGolemCam.height = 64 * 7;
+		IceGolemCam.x = (int) (x - handler.getGameCamera().getxOffset() - (120 * 3));
+		IceGolemCam.y = (int) (y - handler.getGameCamera().getyOffset() - (120 * 3));
+		IceGolemCam.width = 120 * 7;
+		IceGolemCam.height = 120 * 7;
 
 		if (IceGolemCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
 				|| IceGolemCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
@@ -147,8 +147,27 @@ public class IceGolem extends CreatureBase  {
 
 				xMove = -speed;
 			}
+			if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 8 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 8) {//nada
+				attack = 8;
+				xMove = 0;
+			} else if (x < handler.getWorld().getEntityManager().getPlayer().getX() && handler.getWorld().getEntityManager().getPlayer().getHealth() < 30) {//move right
+				
+				xMove = 2*speed;
+				
+			} else if (x > handler.getWorld().getEntityManager().getPlayer().getX() && handler.getWorld().getEntityManager().getPlayer().getHealth() < 30) {//move left
+				
+				xMove = -2*speed;
+			}
+			if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) ) {//nada
+				yMove = 0;
+			} else if (y < handler.getWorld().getEntityManager().getPlayer().getY() && handler.getWorld().getEntityManager().getPlayer().getHealth() < 30) {//move down
+				yMove = 2*speed;
 
-			if (y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) {//nada
+			} else if (y > handler.getWorld().getEntityManager().getPlayer().getY() && handler.getWorld().getEntityManager().getPlayer().getHealth() < 30) {//move up
+				yMove = -2*speed;
+			}
+
+			if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8)) {//nada
 				yMove = 0;
 			} else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {//move down
 				yMove = speed;
@@ -157,26 +176,26 @@ public class IceGolem extends CreatureBase  {
 				yMove = -speed;
 			}
 
-
-		} else {
-
-
-			switch (direction) {
-			case 1://up
-				yMove = -speed;
-				break;
-			case 2://down
-				yMove = speed;
-				break;
-			case 3://left
-				xMove = -speed;
-				break;
-			case 4://right
-				xMove = speed;
-				break;
-
-			}
 		}
+//		} else {
+//
+//
+//			switch (direction) {
+//			case 1://up
+//				yMove = -speed;
+//				break;
+//			case 2://down
+//				yMove = speed;
+//				break;
+//			case 3://left
+//				xMove = -speed;
+//				break;
+//			case 4://right
+//				xMove = speed;
+//				break;
+//
+//			}
+//		}
 	}
 
 
@@ -185,7 +204,7 @@ public class IceGolem extends CreatureBase  {
 		g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.IceGolem_front,Images.IceGolem_back,Images.IceGolem_left,Images.IceGolem_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 		if(isBeinghurt() && healthcounter<=120){
 			g.setColor(Color.white);
-			g.drawString("SkelyHealth: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
+			g.drawString("IceGolem: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
 		}
 	}
 
