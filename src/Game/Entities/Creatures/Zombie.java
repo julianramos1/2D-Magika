@@ -194,7 +194,7 @@ public class Zombie extends CreatureBase  {
 // TODO CHANGE ITEM DROPPED
 	@Override
 	public void die() {
-		State.setState(handler.getGame().winState);
+		//State.setState(handler.getGame().winState);
 		randint=new Random();
 		RNGR=randint.nextInt(1) + 1;
 		System.out.println(RNGR);

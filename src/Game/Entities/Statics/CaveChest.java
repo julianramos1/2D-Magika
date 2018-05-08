@@ -34,7 +34,6 @@ public class CaveChest extends Chest {
 
 	public Rectangle ir = new Rectangle();
 	public Boolean EP = false;
-	private Inventory chestInventory;
 	protected EntityManager entityManager;
 	private BaseWorld caveWorld;
 	public boolean isOpen = false;
@@ -57,7 +56,6 @@ public class CaveChest extends Chest {
 		ir.y=iry;
 		ir.x=irx;
 
-		chestInventory = new Inventory(handler);
 		chestGUI= new SpellCastUI(handler);
 	}
 
@@ -80,13 +78,13 @@ public class CaveChest extends Chest {
 		}
 		if(handler.getKeyManager().attbut && ir.contains(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0,0))) {
 			for (Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
-				if (i.getName() == "Stick" && i.getCount() >= 1) {
+				if (i.getName() == "Slime" && i.getCount() >= 1) {
 					for (int j = 0; j <= i.getCount(); j++) {
 						if (sticks > 0) {
-							chestInventory.addItem(Item.stick);
+							caveChestInventory.addItem(Item.slime);
 							i.setCount(i.getCount() - 1);
 							sticks --;
-							System.out.println("Added stick to chest");
+							System.out.println("Added slime to chest");
 						}
 					}
 
@@ -95,7 +93,7 @@ public class CaveChest extends Chest {
 			for (Item j : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems() ) {
 				if (j.getName() == "Bone" && j.getCount() == 1) {
 					if (bone > 0) {
-						chestInventory.addItem(Item.bone);
+						caveChestInventory.addItem(Item.bone);
 						bone--;
 						System.out.println("Added bone to chest");
 						j.setCount(j.getCount() - 1);
@@ -103,7 +101,7 @@ public class CaveChest extends Chest {
 				}
 			}
 		}
-		chestInventory.tick();
+		caveChestInventory.tick();
 	}
 
 	@Override
@@ -153,8 +151,8 @@ public class CaveChest extends Chest {
 
 	}
 
-	public Inventory getChestInventory() {
-		return chestInventory;
+	public Inventory getCaveChestInventory() {
+		return caveChestInventory;
 	}
 
 	public void update(Graphics g, String object ) {

@@ -14,14 +14,7 @@ import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
 import Worlds.CaveWorld;
-import Worlds.World1;
-
-import java.awt.*;
 import java.awt.event.KeyEvent;
-
-import javax.swing.JOptionPane;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * Created by Elemental on 2/2/2017.
@@ -35,6 +28,7 @@ public class Chest extends StaticEntity {
 	public Rectangle ir = new Rectangle();
 	public Boolean EP = false;
 	private Inventory chestInventory;
+	public Inventory caveChestInventory;
 	protected EntityManager entityManager;
 	private BaseWorld caveWorld;
 	public boolean isOpen = false;
@@ -57,6 +51,7 @@ public class Chest extends StaticEntity {
 		ir.x=irx;
 
 		chestInventory = new Inventory(handler);
+		caveChestInventory = new Inventory(handler);
 		chestGUI= new SpellCastUI(handler);
 	}
 
@@ -154,6 +149,9 @@ public class Chest extends StaticEntity {
 
 	public Inventory getChestInventory() {
 		return chestInventory;
+	}
+	public Inventory getCaveChestInventory() {
+		return caveChestInventory;
 	}
 
 	public void update(Graphics g, String object ) {

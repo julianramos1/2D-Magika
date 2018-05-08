@@ -28,40 +28,6 @@ public class Snow extends StaticEntity {
 		bounds.width = 64;
 		bounds.height = 64;
 		health=6;
-
-		try {
-			audioFile = new File("res/music/BushRustling.wav");
-			audioStream = AudioSystem.getAudioInputStream(audioFile);
-			format = audioStream.getFormat();
-			info = new DataLine.Info(Clip.class, format);
-			audioClip = (Clip) AudioSystem.getLine(info);
-			audioClip.open(audioStream);
-			audioClip.setMicrosecondPosition(2000);
-
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-
-	@Override
-	public void tick() {
-		if(isBeinghurt()){
-			audioClip.start();
-		}
-		if(!isBeinghurt() && !handler.getKeyManager().attbut){
-			audioClip.stop();
-		}
-		if(!isActive()){
-			audioClip.stop();
-
-		}
-
 	}
 
 	@Override
@@ -99,6 +65,12 @@ public class Snow extends StaticEntity {
 
 	public void setHealth(int health) {
 		this.health = health;
+	}
+
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
