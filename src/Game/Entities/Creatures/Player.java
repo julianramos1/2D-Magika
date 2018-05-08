@@ -309,7 +309,6 @@ public class Player extends CreatureBase {
 			ar.x = movexp;
 			ar.y = fy;
 			g.drawImage(getCurrentFireAnimationFrame(), movexp, fy, 64, 32, null);
-			g.drawRect(movexp, fy, 64, 32);
 			ar.translate(movexp, 0);
 			if(movexp >= tempmovexp + 64*2){
 				FireBall=false;
@@ -328,7 +327,6 @@ public class Player extends CreatureBase {
 			moveyp+=FireSpeed;
 			ar.x = fx-6;
 			ar.y = moveyp;
-			g.drawRect(ar.x, ar.y, 32, 64);
 			g.drawImage(getCurrentFireAnimationFrame(), fx-6, moveyp, 32, 64, null);
 			if(moveyp >= tempmoveyp + 64*2){
 				FireBall=false;
@@ -347,7 +345,6 @@ public class Player extends CreatureBase {
 			moveyn-=FireSpeed;
 			ar.x = fx;
 			ar.y = moveyn;
-			g.drawRect(ar.x, ar.y, 32, 64);
 			g.drawImage(getCurrentFireAnimationFrame(), fx, moveyn, 32, 64, null);
 			if(moveyn <= tempmoveyn - 64*2){
 				FireBall=false;
@@ -366,7 +363,6 @@ public class Player extends CreatureBase {
 			movexn-=FireSpeed;
 			ar.x = movexn;
 			ar.y = fy;
-			g.drawRect(ar.x, ar.y, 64, 32);
 			g.drawImage(getCurrentFireAnimationFrame(), movexn, fy, 64, 32, null);
 			if(movexn <= tempmovexn - 64*2){
 				FireBall=false;
