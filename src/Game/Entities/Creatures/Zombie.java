@@ -135,28 +135,48 @@ public class Zombie extends CreatureBase  {
 
 
 			if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 8 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 8) {//nada
+				attack = 8;
+				xMove = 0;
+			} else if (x < handler.getWorld().getEntityManager().getPlayer().getX() && health < 31) {//move right
+
+				xMove = speed + speed/2;
+
+			} else if (x > handler.getWorld().getEntityManager().getPlayer().getX() && health < 31 ) {//move left
+
+				xMove = -(speed + speed/2);
+
+			} else if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 8 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 8) {//nada
 
 				xMove = 0;
 			} else if (x < handler.getWorld().getEntityManager().getPlayer().getX()) {//move right
 
-				xMove = speed;
+				xMove = -speed;
 
 			} else if (x > handler.getWorld().getEntityManager().getPlayer().getX()) {//move left
 
-				xMove = -speed;
+				xMove = speed;
 			}
 
-			if (y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) {//nada
+			if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) ) {//nada
+				yMove = 0;
+			} else if (y < handler.getWorld().getEntityManager().getPlayer().getY() && health < 31) {//move down
+				yMove = speed + speed/2;
+
+			} else if (y > handler.getWorld().getEntityManager().getPlayer().getY() && health < 31) {//move up
+				yMove = -(speed + speed/2);
+
+			} else if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8)) {//nada
 				yMove = 0;
 			} else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {//move down
-				yMove = speed;
+				yMove = -speed;
 
 			} else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {//move up
-				yMove = -speed;
+				yMove = speed;
 			}
+		}
 
 
-		} else {
+		else {
 
 
 			switch (direction) {
@@ -190,7 +210,7 @@ public class Zombie extends CreatureBase  {
 
 
 
-// TODO CHANGE ITEM DROPPED
+	// TODO CHANGE ITEM DROPPED
 	@Override
 	public void die() {
 		randint=new Random();
@@ -200,5 +220,5 @@ public class Zombie extends CreatureBase  {
 			handler.getWorld().getItemManager().addItem(Item.fireRuneItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
 		}
 		handler.getWorld().getItemManager().addItem(Item.slime.createNew((int)x + bounds.x,(int)y + bounds.y,1));
-		}
+	}
 }
