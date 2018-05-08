@@ -150,11 +150,11 @@ public class Zombie extends CreatureBase  {
 				xMove = 0;
 			} else if (x < handler.getWorld().getEntityManager().getPlayer().getX()) {//move right
 
-				xMove = -speed;
+				xMove = speed;
 
 			} else if (x > handler.getWorld().getEntityManager().getPlayer().getX()) {//move left
 
-				xMove = speed;
+				xMove = -speed;
 			}
 
 			if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8) ) {//nada
@@ -168,10 +168,10 @@ public class Zombie extends CreatureBase  {
 			} else if ((y >= handler.getWorld().getEntityManager().getPlayer().getY() - 8 && y <= handler.getWorld().getEntityManager().getPlayer().getY() + 8)) {//nada
 				yMove = 0;
 			} else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {//move down
-				yMove = -speed;
+				yMove = speed;
 
 			} else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {//move up
-				yMove = speed;
+				yMove = -speed;
 			}
 		}
 
